@@ -1,0 +1,28 @@
+---
+title: "Lab10"
+author: "Aishat Olatunji"
+date: "2022-10-31"
+output: word_document
+---
+
+```{r}
+data = read.csv("/Users/aishatolatunji/Downloads/TitanicData.csv")
+head(data)
+
+data = read.csv("/Users/aishatolatunji/Downloads/TitanicData.csv")
+head(data)
+library(arules)
+rules <- apriori(data)
+inspect(rules)
+#too many rules and some are not interesting
+rules2 <- apriori(data, parameter=list(minlen=2, supp=0.005, conf=0.8),appearance=list(rhs=c("Survived=No","Survived=Yes"),default="lhs"))
+#lets sort the rules based on lift value
+
+#sort the rules based on lift value
+
+rules2= sort(rules2,by="lift")
+inspect(rules2)
+  
+  
+```
+
